@@ -10499,3 +10499,7 @@ nav.navbar.navbar-expand-lg {
   margin-bottom: 20px;
 }
 
+.navbar-inverse {
+  background-color: #111111;
+}
+
