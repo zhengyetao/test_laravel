@@ -20,15 +20,16 @@ class SessionsController extends Controller
             'password' => 'required'
         ]);
 
-        $password = bcrypt($request->password);
-        $user = User::where('email', $request->email)->get();
-        \Log::info($user);
-        \Log::info($user['0']['password']);
+        //$password = bcrypt($request->password);
+        //$user = User::where('email', $request->email)->get();
+        //\Log::info($user);
+        //\Log::info($user['0']['password']);
         
-        //if (Auth::attempt($credentials)) {
-        if (!$user->isEmpty() && password_verify($request->password, $user['0']['password'])) {
+        //if (!$user->isEmpty() && password_verify($request->password, $user['0']['password'])) {
+        if (Auth::attempt($credentials)) {
             session()->flash('success', '欢迎回来！');
-            return redirect()->route('users.show', $user[0]->id);
+            //return redirect()->route('users.show', $user[0]->id);
+            return redirect()->route('users.show', [Auth::user()]);
         } else {
             session()->flash('danger', '很抱歉，您的邮箱和密码不匹配');
             return redirect()->back()->withInput();
