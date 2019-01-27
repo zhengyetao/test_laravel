@@ -26,7 +26,7 @@ class SessionsController extends Controller
         //\Log::info($user['0']['password']);
         
         //if (!$user->isEmpty() && password_verify($request->password, $user['0']['password'])) {
-        if (Auth::attempt($credentials)) {
+        if (Auth::attempt($credentials, $request->has('remember'))) {
             session()->flash('success', '欢迎回来！');
             //return redirect()->route('users.show', $user[0]->id);
             return redirect()->route('users.show', [Auth::user()]);

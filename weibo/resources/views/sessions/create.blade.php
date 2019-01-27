@@ -17,9 +17,17 @@
                     <label for="email">邮箱：</label>
                     <input type="text" name="email" class="form-control" value="{{ old('email') }}"></input>
                 </div>
+
                 <div class="form-group">
                     <label for="password">密码：</label>
                     <input type="password" name="password" class="form-control" value="{{ old('password') }}"></input>
+                </div>
+
+                <div class="form-group">
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" name="remember" id="exampleCheck1">
+                        <label class="form-check-label" for="exampleCheck1">记住我</label>
+                    </div>
                 </div>
 
                 <button type="commit" class="btn btn-primary">登录</button>
